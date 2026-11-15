@@ -15,6 +15,20 @@ from careers import CAREERS
 load_dotenv()
 
 app = Flask(__name__)
+CORS(
+    app,
+    resources={
+        r"/*": {
+            "origins": [
+                "http://localhost:3000",
+                "http://127.0.0.1:3000",
+                "http://10.94.77.225:3000"
+            ],
+            "methods": ["GET", "POST", "OPTIONS"],
+            "allow_headers": ["Content-Type", "Authorization"]
+        }
+    }
+)
 
 # CORS configuration
 frontend_origins = [
